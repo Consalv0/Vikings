@@ -2,23 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
-{
-    Transform target;
+public class CameraMovement : MonoBehaviour {
+    private GameObject player;
+    private Vector3 offset;
+    private Vector3 velocity = Vector3.zero;
 
-    void Start ()
-    {
-        target = GameObject.Find("Player").transform;
+  void Start () {
+    player = GameObject.FindWithTag("Player");
 	}
 
-	void Update ()
-    {
-        
+	void LateUpdate () {
+    transform.position = Vector3.SmoothDamp(transform.position, player.transform.position, ref velocity, 0.2f);
+    // transform.position = player.transform.position + offset;
 	}
-
-    private void FixedUpdate()
-    {
-        transform.position = target.position + new Vector3(0, 0, -10);
-    }
-
 }
