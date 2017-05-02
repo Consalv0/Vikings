@@ -10,7 +10,7 @@ public class BodyMovement : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector3 bodyPos = Camera.main.WorldToScreenPoint(transform.position);
 		Vector3 dir = Input.mousePosition - bodyPos;
 		float newAngle = (Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg) + 270;

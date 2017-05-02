@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ControllerMovement : MonoBehaviour {
+	public float DeltaSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -10,9 +11,9 @@ public class ControllerMovement : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
-		var x = Input.GetAxis("Horizontal") * Time.deltaTime * 10.0f;
-    var z = Input.GetAxis("Vertical") * Time.deltaTime * 10.0f;
+	void LateUpdate () {
+		var x = Input.GetAxis("Horizontal") * Time.deltaTime * DeltaSpeed;
+    var z = Input.GetAxis("Vertical") * Time.deltaTime * DeltaSpeed;
 
     transform.Translate(x, 0, 0);
     transform.Translate(0, z, 0);
